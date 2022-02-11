@@ -1,0 +1,43 @@
+<button pButton routerLink="/table">Table</button>
+
+<form class="main-form" [formGroup]="forms">
+  <h1 class="header">Add Product</h1>
+  <div class="form-input">
+    <label class="field-label {{productName.touched && (productName.dirty || productName.invalid) ? 'err-message': '' ">
+      Product Name*</label>
+    <input class="input-field" formControlName="productName" type="text" pInputText placeholder="Product Name*">
+    <div *ngIf="productName.touched && (productName.dirty || productName.invalid)">
+      <small *ngIf="productName.errors" class="err-message">Enter a valid product name</small>
+    </div>
+  </div>
+  <div class="form-input">
+    <label class="field-label {{ price.touched && (price.dirty || price.invalid) ? 'err-message': '' ">Price*</label>
+    <input class="input-field" formControlName="price" type="number" pInputText placeholder="Price*">
+    <div *ngIf="price.touched && (price.dirty || price.invalid)">
+      <small *ngIf="price.errors" class="err-message">Enter a valid price</small>
+    </div>
+  </div>
+  <div class="form-input">
+    <label class="field-label ">Phone Number</label>
+    <input class="input-field" formControlName="phoneNumber" type="text" pInputText placeholder="Phone Number">
+  </div>
+  <div class="form-input">
+    <label class="field-label {{ email.touched && (email.dirty || email.invalid) ? 'err-message': '' ">Email*</label>
+    <input class="input-field" formControlName="email" type="text" pInputText placeholder="Email*">
+    <div *ngIf="email.touched && (email.dirty || email.invalid)">
+      <small *ngIf="email.errors" class="err-message">Enter a valid email</small>
+    </div>
+  </div>
+  <div class="form-input">
+    <label
+      class="field-label {{ address.touched && (address.dirty || address.invalid) ? 'err-message': '' ">Address*</label>
+    <input class="input-field" formControlName="address" type="text" pInputText placeholder="Address*">
+    <div *ngIf="address.touched && (address.dirty || address.invalid)">
+      <small *ngIf="address.errors" class="err-message">Enter a valid address</small>
+    </div>
+  </div>
+  <div>
+    <button pButton class="btn form-input" (click)="createForm()" [disabled]="forms.status != 'VALID'"
+      routerLink="/table">Add</button>
+  </div>
+</form>

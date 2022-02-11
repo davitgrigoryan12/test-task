@@ -1,0 +1,26 @@
+<button class="create-btn" pButton routerLink="/create">Create Product</button>
+
+<div class="card">
+    <p-table [value]="tableData">
+        <ng-template pTemplate="header">
+            <tr>
+                <th pSortableColumn="productName">Product Name <p-sortIcon field="productName"></p-sortIcon></th>
+                <th pSortableColumn="address">Address <p-sortIcon field="address"></p-sortIcon></th>
+                <th pSortableColumn="email">Email <p-sortIcon field="email"></p-sortIcon></th>
+                <th pSortableColumn="phoneNumber">Phone <p-sortIcon field="phoneNumber"></p-sortIcon></th>
+                <th pSortableColumn="price">Price <p-sortIcon field="price"></p-sortIcon></th>
+                <th>Remove</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-product>
+            <tr>
+                <td>{{product.productName}}</td>
+                <td>{{product.address}}</td>
+                <td>{{product.email}}</td>
+                <td>{{product.phoneNumber}}</td>
+                <td>{{product.price | currency: 'USD'}}</td>
+                <td><button (click)="deleteProduct(product.id)" pButton pRipple type="button" icon="pi pi-times" class="p-button-rounded p-button-danger p-button-outlined"></button></td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
